@@ -1,0 +1,197 @@
+# Nexus Prism — public datasets
+
+Five spreadsheet workbooks built from public-domain government records and from
+a Bitcoin archival node we operate ourselves. Every summary figure in them is a
+live formula pointing back at the rows it came from, so you can click any
+number and trace it rather than taking our word for it.
+
+Free to use, quote and republish under CC BY 4.0. No signup, no licence key,
+no email wall.
+
+---
+
+## Why these exist
+
+We are an independent financial-crime and OSINT intelligence shop with no
+reference customers yet. Rather than ask anyone to believe a capability claim,
+we published the output and the method so it can be checked.
+
+If you find something wrong in here, we would rather hear it than not. There
+is a **Grade my work** tab in each practitioner-variant workbook listing the
+specific places we are least confident, and the contact address is at the
+bottom of this page.
+
+---
+
+## The datasets
+
+### 1. OFAC digital currency designations
+
+![OFAC dashboard](images/ofac_crypto_dashboard.png)
+
+Every cryptocurrency address on the US Treasury SDN list — **1,979 active
+addresses across 19 chains** — with the designated entity and sanctions
+programme behind each.
+
+The part worth your time is the reconciliation tab. We parse Treasury's
+`SDN.XML` directly *and* ingest the independent
+[0xB10C mirror](https://github.com/0xB10C/ofac-sanctioned-digital-currency-addresses)
+as a cross-check. They disagree: our parse finds **three addresses the mirror
+does not, and none the other way**. All three are named individually so you can
+adjudicate it yourself.
+
+### 2. Fifteen sanctions regimes, reconciled
+
+![Regimes dashboard](images/sanctions_regimes_dashboard.png)
+
+**36,558 active designations across 15 government lists** on one spine — OFAC
+SDN and five other OFAC programmes, the EU consolidated list, UK OFSI, the UN
+Security Council list, four BIS lists and two State Department lists.
+
+The centrepiece is a regime-by-regime divergence matrix over 4,722 cross-list
+name pairs. **32,532 distinct names, of which 90.7% (29,506) appear on exactly
+one list.** If you screen against a single jurisdiction, that number is your
+blind spot.
+
+### 3. Export-control designations and the OFAC gap
+
+![Export control dashboard](images/export_control_dashboard.png)
+
+**6,255 designations** across the BIS Entity List, Denied Persons List,
+Unverified List and Military End User List, plus State DTC and ISN — the lists
+that stop shipments, which sanctions tooling aimed at finance mostly ignores.
+
+**5,441 of 5,867 distinct names (92.7%) appear on no OFAC list at all**, each
+one named individually. Fifty years of listing history, back to 1974.
+
+### 4. Structural CoinJoin detection from a full node
+
+![CoinJoin dashboard](images/coinjoin_node_dashboard.png)
+
+**69,364 Bitcoin transactions** classified as collaborative spends from
+transaction shape alone — no label list, no attribution vendor, no block
+explorer. Blocks are read from a Bitcoin Core archival node we run, into a UTXO
+side-car. Plus **1,858 peel chains**, the longest at 24 hops.
+
+The full classification rule is printed in the workbook: the thresholds, the
+branch order, the confidence values. Reimplement it against your own node and
+you should get these rows back.
+
+**This workbook also documents a defect in our own detector — see below.**
+
+### 5. Exposure is not guilt
+
+![Exposure dashboard](images/exposure_dashboard.png)
+
+**51,069 addresses** classified into five precedence-ranked tiers of contact
+with an OFAC-designated address, with the model weight each tier contributes
+stated openly.
+
+Includes **1,343 address-poisoning victims that we identify and deliberately
+score at weight 0.0**. Anyone can send an unsolicited sub-dollar payment from a
+designated address to any address they like; a model that scores the recipient
+for it can be weaponised by the sender. Scoring it at zero costs us a signal
+and is still the right call.
+
+---
+
+## What we got wrong
+
+The CoinJoin detector over-reaches, and the workbook says so on its own
+analysis tab rather than in a footnote.
+
+Of 69,364 detections, **50,548 (72.9%) sit below 1,000 satoshis**. The three
+commonest output values in the entire corpus are 600, 790 and 546 satoshis —
+and 546 is exactly the Bitcoin dust limit. Real JoinMarket and Wasabi pool
+denominations are orders of magnitude larger. Broken out by label,
+`coinjoin_joinmarket` is 84.7% under 10,000 sat, while `coinjoin_whirlpool` is
+96% at real denominations because its exact 5-in/5-out signature is tight
+enough to resist false positives.
+
+Our three-equal-output floor is catching payment batching and dust, not mixing.
+
+So the workbook publishes the full corpus, the denomination distribution that
+exposes the problem, and the **17,634-detection subset at pool-scale
+denominations we would actually stand behind** — and asks where the floor
+belongs. That question is open and we would genuinely like an answer.
+
+---
+
+## How to check our work
+
+- **Sanctions data:** every list is downloadable from its publisher. URLs are
+  on the `99_SOURCES_AND_LICENCE` tab of each workbook. Pick any name and find
+  it in the primary source.
+- **The OFAC reconciliation:** clone the 0xB10C mirror and diff its address set
+  against tab 90.
+- **CoinJoin:** every `txid` is a real Bitcoin transaction. Look one up and
+  count the equal-value outputs yourself. Start with the Whirlpool rows — the
+  5×5 signature is unambiguous and quick to check by hand.
+- **Every summary number:** click it. It is a `COUNTIFS` against a raw tab, and
+  the formula bar shows you the exact range it came from. Nothing in these
+  files is a stored value pretending to be a calculation.
+
+Each workbook opens with a `02_METHOD` tab stating the thresholds and, more
+importantly, the limitations — read it before quoting a figure. Confidence is
+expressed in ICD 203 terms and source reliability in the Admiralty Code.
+
+---
+
+## Formats
+
+Each dataset ships in two variants and several formats, in the
+[Releases](../../releases) section:
+
+| File | Use |
+|---|---|
+| `*_practitioner.ods` / `.xlsx` | Dark theme, includes the *Grade my work* tab |
+| `*_compliance.ods` / `.xlsx` | Light print-safe theme |
+| `*_compliance.pdf` | Reading and printing |
+| `SHA256SUMS` | Verify you got what we published |
+
+`.ods` is the native build; `.xlsx` is provided because chart fidelity through
+Excel's and Google Sheets' ODS import is noticeably worse than LibreOffice's,
+and the charts are half the point.
+
+---
+
+## Licence and attribution
+
+The compilation, reconciliation and analysis in these workbooks are licensed
+**[CC BY 4.0](LICENSE)** — use, republish and modify freely, with credit to
+Quinn Defense Systems, LLC.
+
+The underlying sources carry their own terms, reproduced in full on each
+workbook's `99_SOURCES_AND_LICENCE` tab:
+
+- OFAC SDN, the Consolidated Screening List and DOJ records are **US Government
+  works in the public domain** (17 U.S.C. § 105)
+- The UK Sanctions List is published under the **Open Government Licence v3.0**
+- The EU Consolidated List is reusable under **Commission Decision 2011/833/EU**
+- The 0xB10C mirror is **MIT** licensed
+- Bitcoin ledger data carries no terms
+
+Nothing in these files is derived from a source whose terms prohibit
+redistribution. If you believe any source here is misattributed, tell us and it
+will be corrected or withdrawn.
+
+---
+
+## Who made this
+
+**Quinn Defense Systems, LLC** — Nexus Prism.
+
+We run our own blockchain nodes and fuse on-chain provenance with sanctions,
+corporate and open-source records into one traceable picture, with the working
+shown. Delivery is by dashboard, STIX/TAXII feed, scheduled workbook, or a
+scoped per-matter engagement.
+
+**sales@quinndefensesystems.com**
+
+Two asks, and the second one matters more than the first:
+
+1. Tell us where this is wrong. A correction with a reason is worth more than a
+   compliment.
+2. If it holds up, may we quote you saying so? We are independent and
+   pre-revenue, and a named practitioner's word carries further than anything
+   we can claim about our own work.
