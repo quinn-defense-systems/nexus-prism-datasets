@@ -98,8 +98,8 @@ and is still the right call.
 
 ![Dark web dashboard](images/darkweb_infra_dashboard.png)
 
-We hold 4.59 million crawled documents from Tor, I2P and Freenet. **None of
-them is in this workbook, and that is the point.**
+We hold a multi-million-document crawl corpus spanning Tor, I2P and Freenet.
+**None of it is in this workbook, and that is the point.**
 
 What is in it is everything that can be said about the *networks* without
 publishing anything collected *from* them: a census of **14,398 Tor relays** by
