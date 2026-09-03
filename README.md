@@ -1,9 +1,10 @@
 # Nexus Prism — public datasets
 
-Five spreadsheet workbooks built from public-domain government records and from
-a Bitcoin archival node we operate ourselves. Every summary figure in them is a
-live formula pointing back at the rows it came from, so you can click any
-number and trace it rather than taking our word for it.
+Six spreadsheet workbooks built from public-domain government records, from a
+Bitcoin archival node we operate ourselves, and from our own dark-web
+infrastructure measurements. Every summary figure in them is a live formula
+pointing back at the rows it came from, so you can click any number and trace
+it rather than taking our word for it.
 
 Free to use, quote and republish under CC BY 4.0. No signup, no licence key,
 no email wall.
@@ -93,12 +94,40 @@ designated address to any address they like; a model that scores the recipient
 for it can be weaponised by the sender. Scoring it at zero costs us a signal
 and is still the right call.
 
+### 6. Dark web infrastructure, measured
+
+![Dark web dashboard](images/darkweb_infra_dashboard.png)
+
+We hold 4.59 million crawled documents from Tor, I2P and Freenet. **None of
+them is in this workbook, and that is the point.**
+
+What is in it is everything that can be said about the *networks* without
+publishing anything collected *from* them: a census of **14,398 Tor relays** by
+country, hosting provider and role; **132 days** of I2P network-database
+observations taken from a Tier-1 floodfill router we operate ourselves,
+including daily join and departure churn; **967,444 reachability measurements**
+against **202,456 distinct hidden services**, reported as a latency
+distribution; a software census of 301 fingerprinted services showing what the
+hidden web actually runs on; and 10,448 structural anomaly observations scored
+against rolling per-network baselines.
+
+Onion addresses are SHA-256 hashed at the query. I2P router hashes, Freenet
+site keys and leaseset destinations are dropped entirely. Cross-site
+identifier reuse — the signal that one operator is running several apparently
+unrelated sites — appears only as alert counts.
+
+If you are evaluating whether to trust us with sensitive collection, this file
+is the argument: it shows we can see this, and that we don't leak it.
+
 ---
 
 ## What we got wrong
 
-The CoinJoin detector over-reaches, and the workbook says so on its own
-analysis tab rather than in a footnote.
+Two things, both found by our own checks and both left visible.
+
+### The CoinJoin detector over-reaches
+
+It says so on its own analysis tab rather than in a footnote.
 
 Of 69,364 detections, **50,548 (72.9%) sit below 1,000 satoshis**. The three
 commonest output values in the entire corpus are 600, 790 and 546 satoshis —
@@ -114,6 +143,22 @@ So the workbook publishes the full corpus, the denomination distribution that
 exposes the problem, and the **17,634-detection subset at pool-scale
 denominations we would actually stand behind** — and asks where the floor
 belongs. That question is open and we would genuinely like an answer.
+
+### We nearly published addresses we had no business publishing
+
+The first build of the peel-chain tab carried the full Bitcoin address of each
+chain's subject. Nobody in that table has been designated by any government or
+named by any court, so labelling a real address as a layering subject is an
+accusation we have no basis to make. We caught it with an automated
+pre-publication scan that reads the rendered spreadsheet and refuses to release
+a file containing identifiers it shouldn't — the same scan that clears
+1.6 million cells across these twelve files on every build. Those addresses are
+now truncated. The transaction IDs stay in full, because a transaction is a
+public fact about the ledger rather than a claim about a person, and they are
+what makes the detection reproducible.
+
+We mention it because a control that has never caught anything is a control
+nobody has tested.
 
 ---
 
