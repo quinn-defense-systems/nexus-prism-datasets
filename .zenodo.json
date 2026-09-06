@@ -1,0 +1,38 @@
+{
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "title": "Nexus Prism public datasets: sanctions, export control, structural CoinJoin detection, and dark-web infrastructure",
+  "creators": [
+    {
+      "name": "Quinn, J.P.",
+      "affiliation": "Quinn Defense Systems, LLC"
+    }
+  ],
+  "description": "<p>Six spreadsheet workbooks built from public-domain government records, from a Bitcoin archival node operated by the author, and from first-party dark-web infrastructure measurements. Every summary figure in the workbooks is a live spreadsheet formula referencing the raw rows it derives from, so any published number can be traced to its source rather than taken on trust.</p><p><strong>Contents</strong></p><ul><li><strong>OFAC digital currency designations</strong> &mdash; every cryptocurrency address on the US Treasury SDN list, across 19 chains, with the designated entity and sanctions programme for each. Includes a reconciliation against an independent open-source parse of the same source file, which diverges by three addresses.</li><li><strong>Fifteen sanctions regimes reconciled</strong> &mdash; 36,558 active designations from OFAC SDN and five further OFAC programmes, the EU consolidated list, UK OFSI, the UN Security Council list, four BIS lists and two US State Department lists, placed on a single spine with a regime-by-regime divergence matrix. 90.7 percent (29,506 of 32,532 distinct normalised names) appear on exactly one list.</li><li><strong>Export-control designations and the OFAC gap</strong> &mdash; 6,255 designations across BIS Entity, Denied Persons, Unverified and Military End User lists plus State DTC and ISN. 92.7 percent (5,441 of 5,867 distinct names) appear on no OFAC list.</li><li><strong>Structural CoinJoin detection</strong> &mdash; 69,364 Bitcoin transactions classified as collaborative spends from transaction shape alone, with no label list, attribution vendor or block explorer in the path. Full classification thresholds are published so the result can be reproduced against any archival node. The workbook also documents a defect in the detector: 72.9 percent of detections fall below 1,000 satoshis, where payment batching and dust are more probable than mixing, and a filtered subset of 17,634 detections at pool-scale denominations is provided alongside the full corpus.</li><li><strong>Exposure classification</strong> &mdash; 51,069 addresses assigned to five precedence-ranked tiers of contact with OFAC-designated addresses, with model weights stated, including 1,343 address-poisoning recipients deliberately weighted at zero.</li><li><strong>Dark-web infrastructure</strong> &mdash; Tor, I2P and Freenet described at the network layer, containing none of the collected corpus. A census of 14,398 Tor relays, I2P network-database observations from an operated floodfill router, 967,444 reachability measurements against 202,456 distinct hidden services, and a software census of 301 fingerprinted services. Onion addresses are SHA-256 hashed; router hashes, leaseset destinations and site keys are omitted.</li></ul><p><strong>Formats.</strong> Each dataset is provided in two presentation variants, as both OpenDocument (.ods) and Office Open XML (.xlsx), with PDF renderings of the print-oriented variant. A SHA256SUMS manifest accompanies the release.</p><p><strong>Sources and terms.</strong> OFAC SDN, the Consolidated Screening List and DOJ records are United States Government works in the public domain under 17 U.S.C. 105. The UK Sanctions List is published under the Open Government Licence v3.0. The EU Consolidated List is reusable under Commission Decision 2011/833/EU. Bitcoin ledger data carries no terms. Per-source attribution is recorded on a dedicated tab within each workbook.</p>",
+  "keywords": [
+    "sanctions",
+    "OFAC",
+    "export control",
+    "anti-money laundering",
+    "financial crime",
+    "Bitcoin",
+    "CoinJoin",
+    "blockchain analysis",
+    "OSINT",
+    "open source intelligence",
+    "Tor",
+    "I2P",
+    "sanctions screening",
+    "compliance",
+    "open data"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/quinn-defense-systems/nexus-prism-datasets",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Published by Quinn Defense Systems, LLC. Corrections and methodological criticism are actively invited; each practitioner-variant workbook carries a tab enumerating the specific questions the author considers unresolved."
+}

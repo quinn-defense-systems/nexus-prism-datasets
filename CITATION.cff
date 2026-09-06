@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use these datasets, please cite them as below."
+type: dataset
+title: "Nexus Prism public datasets: sanctions, export control, structural CoinJoin detection, and dark-web infrastructure"
+abstract: >-
+  Six spreadsheet workbooks built from public-domain government records, from a
+  Bitcoin archival node operated by the author, and from first-party dark-web
+  infrastructure measurements. Every summary figure is a live spreadsheet
+  formula referencing the raw rows it derives from, so any published number can
+  be traced rather than taken on trust. Includes a documented defect in the
+  author's own CoinJoin detector and the filtered subset that corrects for it.
+authors:
+  - family-names: Quinn
+    given-names: J.P.
+    affiliation: "Quinn Defense Systems, LLC"
+license: CC-BY-4.0
+repository-code: "https://github.com/quinn-defense-systems/nexus-prism-datasets"
+url: "https://quinndefensesystems.com/datasets/"
+keywords:
+  - sanctions
+  - OFAC
+  - export control
+  - anti-money laundering
+  - financial crime
+  - Bitcoin
+  - CoinJoin
+  - blockchain analysis
+  - OSINT
+  - Tor
+  - I2P
+  - compliance
+  - open data
