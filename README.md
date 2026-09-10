@@ -105,7 +105,7 @@ one named individually. Fifty years of listing history, back to 1974.
 
 ![CoinJoin dashboard](images/coinjoin_node_dashboard.png)
 
-**69,364 Bitcoin transactions** classified as collaborative spends from
+**70,220 Bitcoin transactions** classified as collaborative spends from
 transaction shape alone — no label list, no attribution vendor, no block
 explorer. Blocks are read from a Bitcoin Core archival node we run, into a UTXO
 side-car. Plus **1,858 peel chains**, the longest at 24 hops.
@@ -165,18 +165,18 @@ Two things, both found by our own checks and both left visible.
 
 It says so on its own analysis tab rather than in a footnote.
 
-Of 69,364 detections, **50,548 (72.9%) sit below 1,000 satoshis**. The three
+Of 70,220 detections, **51,099 (72.8%) sit below 1,000 satoshis**. The three
 commonest output values in the entire corpus are 600, 790 and 546 satoshis —
 and 546 is exactly the Bitcoin dust limit. Real JoinMarket and Wasabi pool
 denominations are orders of magnitude larger. Broken out by label,
-`coinjoin_joinmarket` is 84.7% under 10,000 sat, while `coinjoin_whirlpool` is
-96% at real denominations because its exact 5-in/5-out signature is tight
-enough to resist false positives.
+`coinjoin_joinmarket` is 84.6% (45,079 of 53,295) under 10,000 sat, while
+`coinjoin_whirlpool` is 96% (100 of 104) at real denominations because its exact
+5-in/5-out signature is tight enough to resist false positives.
 
 Our three-equal-output floor is catching payment batching and dust, not mixing.
 
 So the workbook publishes the full corpus, the denomination distribution that
-exposes the problem, and the **17,634-detection subset at pool-scale
+exposes the problem, and the **17,925-detection subset at pool-scale
 denominations we would actually stand behind** — and asks where the floor
 belongs. That question is open and we would genuinely like an answer.
 
