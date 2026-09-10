@@ -1,5 +1,7 @@
 # Nexus Prism — public datasets
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22694724.svg)](https://doi.org/10.5281/zenodo.22694724)
+
 Six spreadsheet workbooks built from public-domain government records, from a
 Bitcoin archival node we operate ourselves, and from our own dark-web
 infrastructure measurements. Every summary figure in them is a live formula
@@ -253,6 +255,27 @@ workbook's `99_SOURCES_AND_LICENCE` tab:
 Nothing in these files is derived from a source whose terms prohibit
 redistribution. If you believe any source here is misattributed, tell us and it
 will be corrected or withdrawn.
+
+---
+
+## How to cite
+
+These datasets are archived on Zenodo and carry a DOI, so a citation to them
+resolves permanently even if this repository moves or disappears.
+
+> Quinn, J.P. (2026). *Nexus Prism public datasets: sanctions, export control,
+> structural CoinJoin detection, and dark-web infrastructure* [Data set].
+> Zenodo. https://doi.org/10.5281/zenodo.22694724
+
+There are two DOIs and the difference matters if you are publishing against
+this data. **`10.5281/zenodo.22694724`** is the concept DOI — it always
+resolves to the newest version, which is what you want in most citations.
+**`10.5281/zenodo.22694725`** is the version DOI for the 2026-09-10 release
+specifically; cite that one if your result depends on the exact rows you
+worked from and would change under a later correction.
+
+A `CITATION.cff` file in this repository carries the same information in
+machine-readable form, and GitHub renders it under **Cite this repository**.
 
 ---
 
