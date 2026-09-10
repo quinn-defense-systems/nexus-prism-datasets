@@ -11,6 +11,40 @@ no email wall.
 
 ---
 
+## Download the files
+
+**The workbooks are release assets, not files in this repository.** Browsing the
+repo shows you this page and the chart images only — the links below are the
+actual spreadsheets.
+
+| Dataset | Practitioner | Compliance | PDF |
+|---|---|---|---|
+| 1. OFAC digital currency designations | [.ods](../../releases/latest/download/nexus_prism_ofac_crypto_practitioner.ods) · [.xlsx](../../releases/latest/download/nexus_prism_ofac_crypto_practitioner.xlsx) | [.ods](../../releases/latest/download/nexus_prism_ofac_crypto_compliance.ods) · [.xlsx](../../releases/latest/download/nexus_prism_ofac_crypto_compliance.xlsx) | [.pdf](../../releases/latest/download/nexus_prism_ofac_crypto_compliance.pdf) |
+| 2. Fifteen sanctions regimes | [.ods](../../releases/latest/download/nexus_prism_sanctions_regimes_practitioner.ods) · [.xlsx](../../releases/latest/download/nexus_prism_sanctions_regimes_practitioner.xlsx) | [.ods](../../releases/latest/download/nexus_prism_sanctions_regimes_compliance.ods) · [.xlsx](../../releases/latest/download/nexus_prism_sanctions_regimes_compliance.xlsx) | [.pdf](../../releases/latest/download/nexus_prism_sanctions_regimes_compliance.pdf) |
+| 3. Export control and the OFAC gap | [.ods](../../releases/latest/download/nexus_prism_export_control_practitioner.ods) · [.xlsx](../../releases/latest/download/nexus_prism_export_control_practitioner.xlsx) | [.ods](../../releases/latest/download/nexus_prism_export_control_compliance.ods) · [.xlsx](../../releases/latest/download/nexus_prism_export_control_compliance.xlsx) | [.pdf](../../releases/latest/download/nexus_prism_export_control_compliance.pdf) |
+| 4. Structural CoinJoin detection | [.ods](../../releases/latest/download/nexus_prism_coinjoin_node_practitioner.ods) · [.xlsx](../../releases/latest/download/nexus_prism_coinjoin_node_practitioner.xlsx) | [.ods](../../releases/latest/download/nexus_prism_coinjoin_node_compliance.ods) · [.xlsx](../../releases/latest/download/nexus_prism_coinjoin_node_compliance.xlsx) | [.pdf](../../releases/latest/download/nexus_prism_coinjoin_node_compliance.pdf) |
+| 5. Exposure is not guilt | [.ods](../../releases/latest/download/nexus_prism_exposure_practitioner.ods) · [.xlsx](../../releases/latest/download/nexus_prism_exposure_practitioner.xlsx) | [.ods](../../releases/latest/download/nexus_prism_exposure_compliance.ods) · [.xlsx](../../releases/latest/download/nexus_prism_exposure_compliance.xlsx) | [.pdf](../../releases/latest/download/nexus_prism_exposure_compliance.pdf) |
+| 6. Dark web infrastructure | [.ods](../../releases/latest/download/nexus_prism_darkweb_infra_practitioner.ods) · [.xlsx](../../releases/latest/download/nexus_prism_darkweb_infra_practitioner.xlsx) | [.ods](../../releases/latest/download/nexus_prism_darkweb_infra_compliance.ods) · [.xlsx](../../releases/latest/download/nexus_prism_darkweb_infra_compliance.xlsx) | [.pdf](../../releases/latest/download/nexus_prism_darkweb_infra_compliance.pdf) |
+
+**Verify what you got:**
+[`SHA256SUMS`](../../releases/latest/download/SHA256SUMS)
+
+```bash
+sha256sum -c SHA256SUMS --ignore-missing
+```
+
+Or take everything at once:
+
+```bash
+gh release download --repo quinn-defense-systems/nexus-prism-datasets --clobber
+sha256sum -c SHA256SUMS --ignore-missing
+```
+
+These links always point at the newest release, so a bookmark does not go stale.
+Details of the variants are in [Formats](#formats) below.
+
+---
+
 ## Why these exist
 
 We are an independent financial-crime and OSINT intelligence shop with no
@@ -184,14 +218,14 @@ expressed in ICD 203 terms and source reliability in the Admiralty Code.
 
 ## Formats
 
-Each dataset ships in two variants and several formats, in the
-[Releases](../../releases) section:
+Direct download links are at the [top of this page](#download-the-files); this
+section explains which variant you want.
 
 | File | Use |
 |---|---|
-| `*_practitioner.ods` / `.xlsx` | Dark theme, includes the *Grade my work* tab |
-| `*_compliance.ods` / `.xlsx` | Light print-safe theme |
-| `*_compliance.pdf` | Reading and printing |
+| `*_practitioner.ods` / `.xlsx` | Dark theme, includes the *Grade my work* tab. Take this one if you intend to interrogate the method |
+| `*_compliance.ods` / `.xlsx` | Light print-safe theme, for circulating inside an organisation |
+| `*_compliance.pdf` | Reading and printing only — the formulas are not live in it |
 | `SHA256SUMS` | Verify you got what we published |
 
 `.ods` is the native build; `.xlsx` is provided because chart fidelity through
