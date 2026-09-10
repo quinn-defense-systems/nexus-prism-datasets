@@ -13,6 +13,7 @@ authors:
   - family-names: Quinn
     given-names: J.P.
     affiliation: "Quinn Defense Systems, LLC"
+    orcid: "https://orcid.org/0009-0004-9649-8989"
 license: CC-BY-4.0
 repository-code: "https://github.com/quinn-defense-systems/nexus-prism-datasets"
 url: "https://quinndefensesystems.com/datasets/"
